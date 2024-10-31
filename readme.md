@@ -4,7 +4,7 @@
 
 ## Установка на Windows
 
-1. Скачайте репозиторий удобным для вас способом, например, git clone "https://github.com/Zeltq/weather_predictor"
+1. Скачайте репозиторий удобным для вас способом, например, git clone "https://github.com/Zeltq/weather_predictor_2"
 2. Перейдите в каталог проекта в командной строке и введите python -m venv venv
 3. Активируйте окружение, введя venv\Scripts\activate
 4. Установите необходимые библиотеки, введя pip install -r requirements.txt
