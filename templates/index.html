@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погодные условия</title>
+    <script> 
+        let pointCount = 2; // Начальное количество точек
+
+        function addPoint() {
+            pointCount++;
+            const container = document.getElementById('points_container');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = 'points'; // Название для массива
+            input.placeholder = `Точка ${pointCount}`; // Название для новых точек
+            input.required = true; // Обязательное поле
+            input.classList.add('point-input'); // Добавляем класс для отступов
+            container.appendChild(input);
+        }
+
+        function removePoint() {
+            if (pointCount > 2) { // Удаляем точку, только если их больше двух
+                pointCount--;
+                const container = document.getElementById('points_container');
+                container.removeChild(container.lastChild); // Удаляем последний input
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Проверка погодных условий для путешествий</h1>
+    <form method="POST">
+        <div id="points_container">
+            <input type="text" name="points" placeholder="Точка 1" required class="point-input">
+            <input type="text" name="points" placeholder="Точка 2" required class="point-input">
+        </div>
+        <button type="button" onclick="addPoint()">Добавить точку</button>
+        <button type="button" onclick="removePoint()">Убрать точку</button>
+        <br><br>
+        <button type="submit" name="forecast" value="3_days">Проверить погоду на 3 дня вперёд</button>
+        <button type="submit" name="forecast" value="5_days">Проверить погоду на 5 дней вперёд</button>
+    </form>
+
+    {% if dash_url %}
+        <iframe src="{{ dash_url }}" width="100%" height="600px"></iframe>
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
