@@ -49,7 +49,7 @@ async def get_weather_description_by_cities(cities, api_key, days):
                 min_t = day['Temperature']['Minimum']['Value']
                 probability = day['Day']['PrecipitationProbability']
                 wind_speed = day['Day']['Wind']['Speed']['Value']
-                text_to_user = text_to_user + f'День: {day_counter}\nТемпература от {min_t} °C до {max_t} °C.\n\Вероятность осадков: {probability} %.\nСкорость ветра: {wind_speed}.\n\n'
+                text_to_user = text_to_user + f'День: {day_counter}\nТемпература от {min_t} °C до {max_t} °C.\nВероятность осадков: {probability} %.\nСкорость ветра: {wind_speed}.\n\n'
                 day_counter += 1
             answer[el] = text_to_user
 
